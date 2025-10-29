@@ -22,10 +22,25 @@
 
 ## Project Overview
 This dashboard is part of my Breaking Into Tech series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
-This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — the exact insights I need as I enter Tech!
+This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — the exact insights I need as I enter Tech.
 <hr style="border: 2px solid #0969DA;">
 
 ## View Live Dashboard
 [![Power BI](https://img.shields.io/badge/Power_BI-View_Live_Dashboard-00D084?style=for-the-badge&logo=powerbi&logoColor=white)](https://app.powerbi.com/view?r=eyJrIjoiOWRkNDU4OTktN2E2NS00NmU0LWE2MzQtZTk3N2Y1MjQ2YjAyIiwidCI6IjJhYmQ1YTUwLThlZjctNGRjZi04Yzc5LWE0ZWFlNTJlZGIyMSJ9&pageName=b2b3890d4d5c5f56d666)
 
 <hr style="border: 2px solid #0969DA;">
+
+##Key Insights
+XX
+<hr style="border: 2px solid #0969DA;">
+
+##Technical Implementation
+XX
+<hr style="border: 2px solid #0969DA;">
+
+
+## Data Source
+
+**[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/)
+
+*All analysis and insights are my own. Stack Overflow is not affiliated with this project.*
