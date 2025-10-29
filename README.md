@@ -21,7 +21,7 @@
 <hr style="border: 2px solid #0969DA;">
 
 ## Project Overview
-This dashboard is part of my **Breaking Into Tech** series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
+This dashboard is part of my **Breaking Into Tech** series. After almost a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
 This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — insights that are guiding my own transition into Tech.
 <hr style="border: 2px solid #0969DA;">
 
