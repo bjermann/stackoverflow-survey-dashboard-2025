@@ -3,17 +3,17 @@
 <table>
   <tr>
     <td width="50%">
-      <b>Overview Dashboard</b><br/>
+      <b>Learning Pathways</b><br/>
       <img width="100%" alt="Overview" src="https://github.com/user-attachments/assets/8ad56a73-5d51-4ac8-95ac-5da19db85735" />
     </td>
     <td width="50%">
-      <b>AI Adoption Analysis</b><br/>
+      <b>The Rise of AI</b><br/>
       <img width="100%" alt="AI Dashboard" src="https://github.com/user-attachments/assets/b5e20958-ab28-42ca-ae50-f0fb39e1d007" />
     </td>
   </tr>
   <tr>
     <td colspan="2" align="center">
-      <b>Compensation Insights</b><br/>
+      <b>TechComp Trends</b><br/>
       <img width="60%" alt="Compensation Dashboard" src="https://github.com/user-attachments/assets/1719dd6d-241c-47ae-88dc-3a52c46e9431" />
     </td>
   </tr>
