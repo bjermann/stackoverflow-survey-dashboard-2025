@@ -21,7 +21,7 @@
 <hr style="border: 2px solid #0969DA;">
 
 ## Project Overview
-This dashboard is part of my Breaking Into Tech series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
+This dashboard is part of my **Breaking Into Tech** series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
 This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — insights that are guiding my own transition into Tech.
 <hr style="border: 2px solid #0969DA;">
 
@@ -32,14 +32,14 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 
 ## Key Insights
 
-**📚 How developers Learn<br/>**
-⮕**Technical documentation leads at 68% usage** across both new learners and professionals, establishing itself as most the reliable learning resource<br/>
+**📚 How Developers Learn<br/>**
+⮕**Technical documentation leads at 68% usage** across both new learners and professionals, making it the most reliable learning resource<br/>
 ⮕**39% of Gen Z developers list coding challenges as their preferred format, yet only 15% used them in the past year to learn.** This 24-percentage-point gap between preference and usage signals an underserved market opportunity: platforms that can deliver engaging, high-quality coding challenges could capture significant user growth by meeting this unmet demand, particularly among the next generation of developers.
 <br/>
 <br/>
 **🤖 The AI Paradox<br/>**
 ⮕**78% of developers use AI tools, yet 46% distrust their accuracy.** The disconnect between high usage and low trust suggests developers have embraced AI as a productivity tool, using it for boilerplate code, documentation lookup, and prototyping while still applying critical judgment to outputs</br>
-⮕**64% believe AI is not a threat to their current jobs**, reinforcing that AI is viewed as an augmentation tool rather than a replacement technology.<br/>
+⮕**64% believe AI is not a threat to their current jobs**, reinforcing that AI is viewed as an assistant rather than a replacement technology.<br/>
 ⮞**The takeaway: AI literacy is expected, but human judgment remains irreplaceable**
 <br/>
 <br/>
@@ -48,13 +48,6 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 <br/>
 <hr style="border: 2px solid #0969DA;">
 
-##Technical Implementation
-XX
-<hr style="border: 2px solid #0969DA;">
-
-
 ## Data Source
-
-**[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/)
-
+**[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/) <br/>
 *All analysis and insights are my own. Stack Overflow is not affiliated with this project.*
