@@ -22,7 +22,7 @@
 
 ## Project Overview
 This dashboard is part of my Breaking Into Tech series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
-This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — the exact insights I need as I enter Tech.
+This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — the insights I'm using to break into Tech!
 <hr style="border: 2px solid #0969DA;">
 
 ## View Live Dashboard
