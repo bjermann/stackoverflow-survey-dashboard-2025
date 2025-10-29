@@ -21,8 +21,8 @@
 <hr style="border: 2px solid #0969DA;">
 
 ## Project Overview
-[Breaking Into Tech] Interactive Power BI dashboard analyzing 49,000+ responses from the 2025 Stack Overflow Developer Survey. Insights on AI adoption, compensation trends, and learning pathways.
-
+This dashboard is part of my Breaking Into Tech series. After a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
+This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — the exact insights I need as I enter Tech!
 <hr style="border: 2px solid #0969DA;">
 
 ## View Live Dashboard
