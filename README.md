@@ -48,25 +48,35 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 <br/>
 <hr style="border: 2px solid #0969DA;">
 
-##Technical Highlights (SQL + Power BI)
+## Technical Highlights (SQL + Power BI)
 
-1. Salary Analysis by role (bar chart)
-<img width="1087" height="328" alt="image" src="https://github.com/user-attachments/assets/5b8eceeb-8171-4d19-a8e7-c1c4968fb8d5" />
-<br>
-**Objective:** To show how median compensation varies by developer role in the United States.
-<br>
+**1. Salary Analysis by Role**
+
+**Visualization:** Bar chart showing median compensation by developer role (U.S. only)
+
 | Concepts | Purpose |
-|-----------|---------|
-| **Subquery + window function** | Calculates median salary per DevType using `PERCENTILE_CONT` (SQL Server has no `MEDIAN()` function) |
-| **Aggregation in outer query** | Adds average years of experience + number of respondents |
-| **Sample size filter** | `HAVING COUNT(*) >= 10` prevents misleading medians from tiny groups |
-| **Pre-aggregated table output** | Power BI only visualizes the result — no DAX median needed |
-
-**SQL example (core logic)**
+|------------|-----------------|
+| **Window function** | Uses `PERCENTILE_CONT(0.5)` to calculate median salary while keeping all rows available for additional filtering |
+| **Subquery** | Separates median salary calculation from final aggregation to improve readability and reusability |
+| **Role-level aggregation** | Summarizes multiple salary records into a single row per DevType for graphing in Power BI |
+| **Sample size filter** | Filters out roles with fewer than 10 respondents using `HAVING COUNT(*) >= 10` to avoid misleading medians |
 
 ```sql
-PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY CompTotal)
-    OVER (PARTITION BY DevType) AS MedianSalary
+-- Median salary by role (dataset for Power BI bar chart)
+SELECT 
+    DevType,
+    CompTotal,
+    PERCENTILE_CONT(0.5)                    -- Calculate 50th percentile (median)
+    WITHIN GROUP (ORDER BY CompTotal) 
+    OVER (PARTITION BY DevType)             -- Group by role without collapsing rows
+    AS MedianSalary
+FROM breaking_into_tech
+WHERE Country = 'United States of America' -- Filter for US salaries only
+  AND Currency = 'USD United States dollar'
+  AND CompTotal IS NOT NULL
+GROUP BY DevType
+HAVING COUNT(*) >= 10;                      -- Remove roles with <10 respondents
+```
 
 ## Data Source
 **[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/) <br/>
