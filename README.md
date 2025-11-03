@@ -56,7 +56,7 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 
 | Concepts | Purpose |
 |------------|-----------------|
-| **Window function** | Uses `PERCENTILE_CONT(0.5)` to calculate median salary while keeping all rows available for additional filtering |
+| **Window function** | Uses `PERCENTILE_CONT(0.5) over (PARTITION BY DevType)` to calculate median salary while keeping all rows available for additional filtering |
 | **Subquery** | Separates median salary calculation from final aggregation to improve readability and reusability |
 | **Role-level aggregation** | Summarizes multiple salary records into a single row per DevType for graphing in Power BI |
 | **Sample size filter** | Filters out roles with fewer than 10 respondents using `HAVING COUNT(*) >= 10` to avoid misleading medians |
@@ -71,12 +71,48 @@ SELECT
     OVER (PARTITION BY DevType)             -- Group by role without collapsing rows
     AS MedianSalary
 FROM breaking_into_tech
-WHERE Country = 'United States of America' -- Filter for US salaries only
+WHERE Country = 'United States of America'  -- Filter for US salaries only
   AND Currency = 'USD United States dollar'
   AND CompTotal IS NOT NULL
 GROUP BY DevType
 HAVING COUNT(*) >= 10;                      -- Remove roles with <10 respondents
 ```
+
+**2. Salary Progression by Experience**
+
+**Visualization:** Interactive line chart showing salary progression by experience level for selected developer role
+
+| Concepts | Purpose |
+|----------|---------|
+| **Common Table Expression (CTE)** | Creates a temporary named query that cleans data before inserting into the final table, making the query easier to read and debug |
+| **CASE expression** | Creates experience bands (0-2 years, 3-5 years, etc.) with numeric prefixes for proper sorting when graphing |
+| **Data quality filtering** | Removes invalid records (`IS NOT NULL`, `CompTotal > 0`) in SQL to improve performance and ensure consistency across visuals |
+| **INSERT INTO SELECT** | Populates reporting table with transformed data, moving heavy processing to SQL rather than Power BI, improving dashboard load times |
+
+```sql
+-- CTE to filter and categorize raw survey data
+WITH filtered_data AS (
+    SELECT 
+        ResponseID,
+        DevType,
+        WorkExp,
+        CompTotal,
+        CASE 
+            WHEN WorkExp BETWEEN 0 AND 2 THEN '1. 0-2 years'      -- Entry level
+            WHEN WorkExp BETWEEN 3 AND 5 THEN '2. 3-5 years'      -- Early career
+            WHEN WorkExp BETWEEN 6 AND 10 THEN '3. 6-10 years'    -- Mid career
+            WHEN WorkExp BETWEEN 11 AND 15 THEN '4. 11-15 years'  -- Senior
+            WHEN WorkExp >= 16 THEN '5. 16+ years'                -- Expert level
+        END AS ExperienceRange
+    FROM breaking_into_tech
+    WHERE DevType IS NOT NULL                                      -- Remove missing values
+      AND CompTotal > 0                                            -- Filter out invalid salaries
+      AND Country = 'United States of America'
+      AND Currency = 'USD United States dollar'
+);
+```
+
+
 
 ## Data Source
 **[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/) <br/>
