@@ -173,6 +173,18 @@ DIVIDE(
 
 <hr style="border: 2px solid #0969DA;">
 
+## Repository Contents
+
+**Power BI Dashboard:**
+- `Breaking into Tech Project.pbix` - Interactive dashboard with data model and DAX measures
+
+**SQL Scripts:**
+- `TechCompGraphAvgExp.sql` - Median salary calculation by developer role
+- `TechCompGraphSalaryProgression.sql` - Salary progression across experience levels
+- `LearnCodeResponsesSplit.sql` - Learning methods data normalization
+
+<hr style="border: 2px solid #0969DA;">
+
 ## Data Source
 **[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/) <br/>
 *All analysis and insights are my own. Stack Overflow is not affiliated with this project.*
