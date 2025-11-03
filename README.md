@@ -22,7 +22,7 @@
 
 ## Project Overview
 This dashboard is part of my **Breaking Into Tech** series. After almost a decade in Finance, I'm analyzing real developer data to understand the Technology industry. 
-This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — insights that are guiding my own transition into Tech.
+This dashboard explores **49,000+ 2025 Stack Overflow Developer Survey responses** to uncover trends in AI adoption, compensation, and learning pathways — insights that are guiding my own transition into Tech.
 <hr style="border: 2px solid #0969DA;">
 
 ## View Live Dashboard
@@ -51,8 +51,7 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 ## Technical Highlights (SQL + Power BI)
 
 > **📊 Data Architecture:**  
-> This dashboard uses a **direct SQL Server connection** queried live from Power BI, ensuring data remains current and eliminating the risk of stale insights common with static CSV imports.
-
+> This dashboard uses a direct SQL Server connection in Power BI, keeping data current and eliminating stale insights common with static CSV imports.
 
 **1. Salary Analysis by Role**
 
@@ -160,16 +159,16 @@ DIVIDE(
 ## Analytical Approach & Design
 
 **Exploratory Data Analysis**
-- Built exploratory bar charts segmented by demographics (role, experience) and behavior (new vs. experienced learners) to identify patterns
-- Surfaced key insight through analysis: 33% of new learners use AI-assisted tools → elevated to KPI card
-- Used iterative filtering to validate statistical significance before finalizing dashboard metrics
+- Built exploratory bar charts segmented by demographics and behavior (new vs. experienced learners) to identify patterns
+- Identified key insight: 33% of new learners use AI-assisted tools → featured in a custom KPI card
+- Validated key findings against the official 2025 Stack Overflow Developer Survey report before finalizing dashboard metrics
 
 **Data Storytelling & Layout**
-- Designed three-page narrative flow: *Learning Pathways* → *AI Adoption* → *Compensation Trends*
+- Designed three-page narrative flow: *Learning Pathways* → *The Rise of AI* → *TechComp Trends*
 - Structured each page to answer a specific question relevant to career changers entering tech
 
 **Custom Visualizations**
-- Extended beyond native Power BI visuals using HTML/CSS for gradient-styled KPI cards
+- Extended beyond usual Power BI visuals using HTML/CSS for gradient-styled KPI cards
 - Created color-coded trust scale legend (red = low trust → green = high trust) for intuitive interpretation
 
 <hr style="border: 2px solid #0969DA;">
