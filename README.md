@@ -50,6 +50,10 @@ This dashboard explores **49,000+ Stack Overflow Developer Survey responses** to
 
 ## Technical Highlights (SQL + Power BI)
 
+> **📊 Data Architecture:**  
+> This dashboard uses a **direct SQL Server connection** queried live from Power BI, ensuring data remains current and eliminating the risk of stale insights common with static CSV imports.
+
+
 **1. Salary Analysis by Role**
 
 **Visualization:** Bar chart showing median compensation by developer role (U.S. only)
@@ -112,7 +116,63 @@ WITH filtered_data AS (
 );
 ```
 
+**3. Learning Methods Analysis**
 
+**Visualization:** Bar chart showing distribution of learning approaches
+> **⚠️ Data Challenge:**  
+> The `LearnCode` field stored multiple learning methods in a single delimited string (e.g., "Online courses; Bootcamp; Books") ➜ not suitable for filtering, grouping, or establishing relationships in Power BI.<br>
+> **✅ Solution:** Split delimited strings into separate rows using `STRING_SPLIT` with `CROSS APPLY`.<br>
+> **🎯 Result** Each learning method is now normalized to one row per response, enabling % calculations and slicer analysis in Power BI.
+
+| Concepts | Purpose |
+|----------|---------|
+| Data normalization | Splits multi-value field into separate rows to create proper relational structure for analysis |
+| STRING_SPLIT with CROSS APPLY | Transforms delimited string (e.g., "Online courses; Bootcamp; Books") into individual rows, one per learning method |
+| LTRIM and RTRIM | Removes leading and trailing whitespace from parsed values to ensure data consistency |
+| UPDATE with CASE | Standardizes category names post-insert for user-friendly labels in Power BI |
+| Composite key | Uses `ResponseID` + `LearnCodeType` to establish one-to-many relationship with parent table |
+
+```sql
+-- Split multi-select field into normalized rows
+INSERT INTO LearnCodeResponsesSplit (ResponseID, LearnCodeType)
+SELECT 
+    ResponseID,
+    LTRIM(RTRIM(value)) AS LearnCodeType           -- Remove whitespace from parsed values
+FROM breaking_into_tech
+CROSS APPLY STRING_SPLIT(LearnCode, ';');          -- Split delimited string into rows
+
+-- Standardized category names using UPDATE with CASE (LearnCodeType → LearnCategory)
+```
+
+**DAX Measure for Bar Chart Visualization:**
+```dax
+% of Respondents Using Learning Method = 
+DIVIDE(
+    DISTINCTCOUNT(LearnCodeResponsesSplit[ResponseID]),     -- Count unique respondents, important since after normalization we have repeated ResponseIDs
+    CALCULATE(
+        DISTINCTCOUNT(LearnCodeResponsesSplit[ResponseID]), -- Total (excluding blanks)
+        NOT ISBLANK(LearnCodeResponsesSplit[LearnCategory]) -- LearnCategory created via UPDATE/CASE (not shown)
+))
+```
+
+<hr style="border: 2px solid #0969DA;">
+
+## Analytical Approach & Design
+
+**Exploratory Data Analysis**
+- Built exploratory bar charts segmented by demographics (role, experience) and behavior (new vs. experienced learners) to identify patterns
+- Surfaced key insight through analysis: 33% of new learners use AI-assisted tools → elevated to KPI card
+- Used iterative filtering to validate statistical significance before finalizing dashboard metrics
+
+**Data Storytelling & Layout**
+- Designed three-page narrative flow: *Learning Pathways* → *AI Adoption* → *Compensation Trends*
+- Structured each page to answer a specific question relevant to career changers entering tech
+
+**Custom Visualizations**
+- Extended beyond native Power BI visuals using HTML/CSS for gradient-styled KPI cards
+- Created color-coded trust scale legend (red = low trust → green = high trust) for intuitive interpretation
+
+<hr style="border: 2px solid #0969DA;">
 
 ## Data Source
 **[2025 Stack Overflow Developer Survey](https://survey.stackoverflow.co/)** | Licensed under [ODbL](http://opendatacommons.org/licenses/odbl/1.0/) <br/>
